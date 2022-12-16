@@ -1,14 +1,20 @@
-
-const TaskItem = ({ isCheked, id, text, toggleTaskCompleted, removeTask }) => {
+import { useDispatch } from "react-redux"
+import { removeTask, toggleTaskCompleted } from "../store/taskSlice"
+const TaskItem = ({ isCheked, id, text}) => {
+  const dispatch = useDispatch()
 
   return (
-    <div key={`tasks + ${text}`}>
+    <div className="item">
       <input
         type='checkbox'
         checked={isCheked}
-        onChange={() => toggleTaskCompleted(id)} />
+        onChange={() => dispatch(toggleTaskCompleted({id}))} />
       <span>{text}</span>
-      <button onClick={() => removeTask(id)}>Delete</button>
+      <button 
+        className="delete" 
+        onClick={() => dispatch(removeTask({id}))}>
+        &times;
+        </button>
     </div>
   )
 }

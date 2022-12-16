@@ -2,10 +2,19 @@
   text-align: center;
 }
 
-.tasks {
+.item {
   display:flex;
   justify-content: center;
   align-items: center;
-  
-  
+  gap: 1rem;
+  padding: 20px;
+}
+
+.delete {
+  cursor: pointer;
+  color: red;
+}
+
+input:checked + span {
+  text-decoration:line-through
 }

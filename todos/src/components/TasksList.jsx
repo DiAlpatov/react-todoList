@@ -1,17 +1,18 @@
+import {useSelector} from "react-redux"
 import TaskItem from "./TaskItem";
 
-const TasksList = ({tasks, removeTask, toggleTaskCompleted}) => {
+
+const TasksList = () => {
+const tasks = useSelector(state => state.task.tasks)
 
   return (
     <div>
       {
-        tasks.map((task) => 
+        tasks.map((task) => (
         <TaskItem 
         key={task.id} 
-        removeTask={removeTask}
-        toggleTaskCompleted={toggleTaskCompleted}
         {...task}/>)
-      }
+      )}
     </div>
   )
 }
